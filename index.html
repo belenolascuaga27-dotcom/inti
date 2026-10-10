@@ -10,30 +10,31 @@
 <style>
 /* Layout: one scrolling page, sticky nav, sections separated by stepped Inca fret bands; Inti sun in the hero, chakana as the recurring mark */
 :root {
-  --bg: #fdfcf9;
-  --surface: #f3f1ec;
-  --ink: #1c1a33;
-  --muted: #5d5a73;
+  --bg: #fdfaf6;
+  --surface: #f4efe9;
+  --ink: #2b1c16;
+  --muted: #6b5a52;
   --sun: #e9a20f;
   --sun-soft: #fbe7b5;
   --teal: #0e7470;
   --red: #a3262b;
-  --line: #e2ded4;
-  --on-sun: #1c1a33;
+  --line: #e5dcd2;
+  --on-sun: #2b1c16;
+  --on-red: #fff8f2;
   --display: "Unbounded", "Arial Black", system-ui, sans-serif;
   --body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
   --radius: 14px;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #14132a; --surface: #1e1c38; --ink: #f3f1ea; --muted: #b3b0c8;
-    --sun: #f2b532; --sun-soft: #3a3020; --teal: #4fc2bb; --red: #e0645d; --line: #2f2d4c; --on-sun: #14132a;
+    --bg: #1a1210; --surface: #261b17; --ink: #f5ede6; --muted: #c2b2a8;
+    --sun: #f2b532; --sun-soft: #3a3020; --teal: #4fc2bb; --red: #e0645d; --line: #3a2b25; --on-sun: #1a1210; --on-red: #1a1210;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --bg: #14132a; --surface: #1e1c38; --ink: #f3f1ea; --muted: #b3b0c8;
-  --sun: #f2b532; --sun-soft: #3a3020; --teal: #4fc2bb; --red: #e0645d; --line: #2f2d4c; --on-sun: #14132a;
+  --bg: #1a1210; --surface: #261b17; --ink: #f5ede6; --muted: #c2b2a8;
+  --sun: #f2b532; --sun-soft: #3a3020; --teal: #4fc2bb; --red: #e0645d; --line: #3a2b25; --on-sun: #1a1210; --on-red: #1a1210;
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
@@ -71,7 +72,7 @@ p { margin: 0; }
 
 /* Buttons */
 .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 999px; font: 600 .98rem/1 var(--body); text-decoration: none; border: 2px solid transparent; cursor: pointer; }
-.btn-sun { background: var(--sun); color: var(--on-sun); }
+.btn-sun { background: var(--red); color: var(--on-red); }
 .btn-sun:hover { filter: brightness(1.06); }
 .btn-ghost { border-color: var(--ink); color: var(--ink); background: transparent; }
 .btn-ghost:hover { background: var(--ink); color: var(--bg); }
@@ -122,10 +123,10 @@ p { margin: 0; }
 .gallery figcaption { position: absolute; left: 10px; bottom: 10px; right: 10px; padding: 6px 10px; border-radius: 8px; background: color-mix(in srgb, var(--bg) 85%, transparent); color: var(--ink); font-size: .85rem; font-weight: 500; }
 .ph-tile { width: 100%; height: 100%; display: grid; place-items: center; color: var(--muted); font-size: .9rem;
   background: radial-gradient(circle at 30% 30%, var(--sun-soft), transparent 60%), var(--surface); }
-.lightbox { position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; padding: 24px; background: rgba(10,9,24,.88); }
+.lightbox { position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; padding: 24px; background: rgba(20,12,10,.9); }
 .lightbox img { max-height: 82vh; border-radius: 10px; }
 .lightbox p { color: #f3f1ea; margin-top: 12px; text-align: center; }
-.lightbox button { position: absolute; top: calc(16px + env(safe-area-inset-top, 0px)); right: 16px; background: #f3f1ea; color: #14132a; border: 0; border-radius: 999px; padding: 8px 14px; font: 600 .9rem var(--body); cursor: pointer; }
+.lightbox button { position: absolute; top: calc(16px + env(safe-area-inset-top, 0px)); right: 16px; background: #f3f1ea; color: #1a1210; border: 0; border-radius: 999px; padding: 8px 14px; font: 600 .9rem var(--body); cursor: pointer; }
 
 /* Board */
 .board { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
@@ -148,12 +149,12 @@ p { margin: 0; }
 @media (max-width: 760px) { .join-grid { grid-template-columns: 1fr; } }
 
 /* Community */
-.community { background: var(--sun); color: var(--on-sun); }
+.community { background: var(--red); color: var(--on-red); }
 .community .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; }
 .community h2 { max-width: 18ch; }
-.community .eyebrow { color: var(--on-sun); opacity: .8; }
-.community .btn-ghost { border-color: var(--on-sun); color: var(--on-sun); }
-.community .btn-ghost:hover { background: var(--on-sun); color: var(--sun); }
+.community .eyebrow { color: var(--on-red); opacity: .85; }
+.community .btn-ghost { border-color: var(--on-red); color: var(--on-red); }
+.community .btn-ghost:hover { background: var(--on-red); color: var(--red); }
 .social { display: flex; flex-wrap: wrap; gap: 12px; }
 
 footer { padding-block: 32px; color: var(--muted); font-size: .92rem; }
@@ -179,7 +180,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   <header class="hero">
     <div class="wrap">
       <div class="hero-copy">
-        <span class="eyebrow" data-site="school">UC San Diego student organization</span>
+        <span class="eyebrow" data-site="school">Student organization at UC San Diego</span>
         <h1><span data-site="name">Inti</span><small data-site="fullname">South American Club</small></h1>
         <p data-site="tagline">Culture, friendship, and representation for South American students and anyone curious about the region.</p>
         <div class="hero-actions">
@@ -296,7 +297,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 
 <footer>
   <div class="wrap">
-    <span>© <span id="year">2026</span> <span data-site="name">Inti</span> <span data-site="fullname">South American Club</span> · <span data-site="school">UC San Diego</span></span>
+    <span>© <span id="year">2026</span> <span data-site="name">Inti</span> <span data-site="fullname">South American Club</span> at <span data-site="school">UC San Diego</span></span>
     <span>Contact: <span id="contact-email">yourorg@gmail.com</span></span>
   </div>
 </footer>
@@ -347,7 +348,7 @@ const SITE = {
 document.querySelectorAll('[data-site]').forEach(el => {
   const v = SITE[el.dataset.site];
   if (!v) return;
-  el.textContent = el.dataset.site === 'school' && el.classList.contains('eyebrow') ? v + ' student organization' : v;
+  el.textContent = el.dataset.site === 'school' && el.classList.contains('eyebrow') ? 'Student organization at ' + v : v;
 });
 document.getElementById('year').textContent = new Date().getFullYear();
 document.getElementById('contact-email').textContent = SITE.email;
