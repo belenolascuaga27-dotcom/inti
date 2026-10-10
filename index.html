@@ -121,6 +121,8 @@ p { margin: 0; }
 .gallery button { all: unset; display: block; width: 100%; height: 100%; cursor: zoom-in; }
 .gallery button:hover img { transform: scale(1.04); }
 .gallery figcaption { position: absolute; left: 10px; bottom: 10px; right: 10px; padding: 6px 10px; border-radius: 8px; background: color-mix(in srgb, var(--bg) 85%, transparent); color: var(--ink); font-size: .85rem; font-weight: 500; }
+.gallery.has-photos { grid-template-columns: repeat(auto-fill, minmax(min(240px, 100%), 1fr)); }
+.gallery.has-photos figure, .gallery.has-photos figure:nth-child(5n+1) { grid-row: auto; aspect-ratio: 4 / 5; }
 .ph-tile { width: 100%; height: 100%; display: grid; place-items: center; color: var(--muted); font-size: .9rem;
   background: radial-gradient(circle at 30% 30%, var(--sun-soft), transparent 60%), var(--surface); }
 .lightbox { position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; padding: 24px; background: rgba(20,12,10,.9); }
@@ -340,7 +342,10 @@ const SITE = {
 
   // Photos: put image files in the photos/ folder and list them here.
   photos: [
-    // { src: "photos/welcome-night.jpg", caption: "Welcome night, Fall 2026" },
+    { src: "photos/picnic.jpg", caption: "Getting to know each other picnic" },
+    { src: "photos/tabling-i-house.jpg", caption: "Tabling at I-House, representing Peru" },
+    { src: "photos/tacos-night.jpg", caption: "Tacos night" },
+    { src: "photos/tequenos-night.jpg", caption: "Tequeños night" },
   ],
 };
 
@@ -418,6 +423,7 @@ if (SITE.calendarId) {
 
 const grid = document.getElementById('gallery-grid');
 if (SITE.photos.length) {
+  grid.classList.add('has-photos');
   SITE.photos.forEach(p => {
     const fig = document.createElement('figure');
     const b = document.createElement('button');
